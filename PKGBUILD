@@ -6,7 +6,7 @@ pkgdesc="todo"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=(
-    "hastur"
+    "docker"
 )
 makedepends=(
 	'go'
@@ -14,7 +14,7 @@ makedepends=(
 )
 
 source=(
-	"aurora::git://github.com/kovetskiy/aurora.git#branch=${BRANCH:-master}"
+	"aurora::git://github.com/brnv/aurora.git#branch=${BRANCH:-master}"
 )
 
 md5sums=(
@@ -75,7 +75,4 @@ package() {
     install -DT \
         "$srcdir/$pkgname/systemd/aurora-web.service" \
         "$pkgdir/usr/lib/systemd/system/aurora-web.service"
-
-    mkdir -p "$pkgdir/etc/aurora"
-    cp -r "$srcdir/$pkgname/conf.d" "$pkgdir/etc/aurora/container"
 }
